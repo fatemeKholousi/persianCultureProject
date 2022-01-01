@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Hero from "./pages/hero";
+import Fal from "./pages/fal";
+import Ashaar1 from "./pages/ashaar";
+import Ashaar2 from "./pages/ashaar2";
+
+import { render } from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Hero />}></Route>
+        <Route path="fal" element={<Fal />} />
+        <Route path="ashaar/page1" element={<Ashaar1 />} />
+        <Route path="ashaar/page2" element={<Ashaar2 />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
