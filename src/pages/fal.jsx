@@ -5,24 +5,52 @@ import "./fal.css";
 
 function Faal() {
   const [data, setData] = useState([]);
+  const [audio, setAudio] = useState("");
 
   useEffect(() => {
-    const response = axios
+    axios
       .get("https://ganjgah.ir/api/ganjoor/hafez/faal")
       .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
 
-    // const indexOfchoosenFaal = Math.floor(Math.random() * data.length);
-    // const choosenFaal = data;
+      .catch((err) => console.log(err));
   }, []);
-  console.log(data.title);
+  useEffect(() => {
+    if (data)
+      setAudio(
+        data &&
+          data.recitations &&
+          data.recitations[0] &&
+          data.recitations[0].mp3Url
+      );
+  }, [data]);
+
   const htmlText = data.htmlText;
-  //   console.log(typeof data);
+
+  function createMarkup() {
+    return { __html: htmlText };
+  }
+
+  console.log(typeof audio);
 
   return (
     <div className="fal--container">
-      <h1>{data.title}</h1>
-      {htmlText}
+      <div className="main__box__container">
+        <div className="center__box">
+          <h1>{data.title}</h1>
+          <div className="poem__box" dangerouslySetInnerHTML={createMarkup()} />
+          <audio
+            className="audio__show"
+            type="audio/ogg"
+            controls
+            autoPlay
+            src={audio}
+          ></audio>
+          <div className="poem__box">h</div>
+        </div>
+        <button className="back__home__btn">بازگشت به صفحه</button>
+      </div>
+
+      {/* {htmlText} */}
     </div>
   );
 }

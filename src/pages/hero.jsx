@@ -1,5 +1,4 @@
 import React from "react";
-// import { Link, useNavigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./hero.css";
 import Tarh from "../images/tarh.png";
