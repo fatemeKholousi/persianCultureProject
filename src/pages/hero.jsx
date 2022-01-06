@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import "./hero.css";
 import Tarh from "../images/tarh.png";
 import BookImg from "../images/drawing-1.png";
 import HeroText from "../images/heroText.png";
+// import HeroText from "";
 
 function Hero() {
   let navigate = useNavigate();
